@@ -44,7 +44,7 @@ for i, uid in enumerate(user_ids):
     n_sessions = max(1, n_events // rng.integers(2, 6))
     session_ids = [f"s{uid}_{j}" for j in range(n_sessions)]
 
-    # korisnikova склoнost kupovini (neki kupuju puno, neki nikad)
+    # korisnikova sklonost kupovini (neki kupuju puno, neki nikad)
     purchase_bias = rng.beta(1.5, 6)
 
     for _ in range(n_events):
@@ -99,6 +99,6 @@ df.loc[outlier_idx, "price"] = df.loc[outlier_idx, "price"] * rng.integers(50, 2
 # 4) promiješaj redove (kao stvaran log)
 df = df.sample(frac=1.0, random_state=1).reset_index(drop=True)
 
-df.to_csv("/home/claude/work/data/ecommerce_events_raw.csv", index=False)
+df.to_csv("data/ecommerce_events_raw.csv", index=False)
 print("Spremljeno:", df.shape)
 print(df.head())
